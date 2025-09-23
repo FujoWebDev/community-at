@@ -26,6 +26,10 @@ export default defineConfig({
           label: "FujoWeb.dev & FujoGuide",
           autogenerate: { directory: "fujowebdev" },
         },
+        {
+          label: "GitHub",
+          autogenerate: { directory: "github" },
+        },
       ],
     }),
   ],
