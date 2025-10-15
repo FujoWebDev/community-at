@@ -38,7 +38,7 @@ Most articles benefits from the following flow:
 
    4. **Use callout boxes/asides for:** _(note**:** we aren’t always using these right in our current material)_
 
-      1. **`::note`:** Information that is helpful to know but that isn’t solving an immediate problem. Might be minor clarifications that enhance understanding without being critical, alternative approaches, or interesting background. _Examples include_: historical reasons for design choices, alternative tools, gentle reminders of past concepts.
+      1. **`:::note`:** Information that is helpful to know but that isn’t solving an immediate problem. Might be minor clarifications that enhance understanding without being critical, alternative approaches, or interesting background. _Examples include_: historical reasons for design choices, alternative tools, gentle reminders of past concepts.
 
       2. **`:::tip`:** Best practices, clever shortcuts, _great_ advice, or links to related guides. These are positive suggestions that will help people work smarter, get over anxieties, or learn more about the topic. _Examples include_: common keyboard shortcuts, optional (but useful) features, “this is hard for experts too”, links to deeper explanations of related topics.
 
