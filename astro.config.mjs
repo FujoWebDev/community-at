@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-import starlightSidebarTopicsPlugin from "starlight-sidebar-topics";
 
 // https://astro.build/config
 export default defineConfig({
