@@ -13,5 +13,9 @@
     "@astrojs/starlight": "^0.36.1",
     "astro": "^5.14.5",
     "sharp": "^0.32.5"
+  },
+  "repository": {
+    "url": "https://github.com/FujoWebDev/community-at",
+    "type": "git"
   }
 }
