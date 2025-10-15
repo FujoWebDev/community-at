@@ -14,6 +14,7 @@ export default defineConfig({
           href: "https://github.com/FujoWebDev/community-at",
         },
       ],
+      customCss: ['./src/index.css'],
       sidebar: [
         {
           label: "Sociocracy",
