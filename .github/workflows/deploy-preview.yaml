@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize, reopened]
   workflow_dispatch:
     inputs:
@@ -16,6 +16,9 @@ name: Site deploy preview
 jobs:
     build:
         runs-on: ubuntu-latest
+        if: |
+          github.event_name != 'pull_request_target' ||
+          contains('MEMBER OWNER COLLABORATOR', github.event.pull_request.author_association)
         permissions:
             pull-requests: write
             contents: read
@@ -39,6 +42,9 @@ jobs:
 
     deploy-website:
         runs-on: ubuntu-latest
+        if: |
+          github.event_name != 'pull_request_target' ||
+          contains('MEMBER OWNER COLLABORATOR', github.event.pull_request.author_association)
         permissions:
           pull-requests: write
           contents: read

@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import starlightSidebarTopics from "starlight-sidebar-topics";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,24 +15,48 @@ export default defineConfig({
           href: "https://github.com/FujoWebDev/community-at",
         },
       ],
-      customCss: ['./src/index.css'],
-      sidebar: [
-        {
-          label: "Sociocracy",
-          items: [
-            // Each item here is one entry in the navigation menu.
-            { label: "Example Guide", slug: "sociocracy/example" },
-          ],
-        },
-        {
-          label: "FujoWeb.dev & FujoGuide",
-          autogenerate: { directory: "fujowebdev" },
-        },
-        {
-          label: "GitHub",
-          autogenerate: { directory: "github" },
-        },
-      ]
+      customCss: ["./src/index.css"],
+      plugins: [
+        starlightSidebarTopics([
+          {
+            label: "Sociocracy & Community",
+            icon: "puzzle",
+            link: "/sociocracy",
+            items: [
+              {
+                label: "Example Guide",
+                autogenerate: { directory: "sociocracy" },
+              },
+            ],
+          },
+          {
+            label: " Software & Other Projects",
+            icon: "seti:powershell",
+            link: "/libraries",
+            items: [
+              {
+                label: "Our Libraries",
+                autogenerate: { directory: "libraries" },
+              },
+            ],
+          },
+          {
+            label: "FujoCoded Resources",
+            icon: "seti:db",
+            link: "/fujowebdev",
+            items: [
+              {
+                label: "Writing for FujoGuide",
+                autogenerate: { directory: "fujowebdev" },
+              },
+              {
+                label: "GitHub Resources",
+                autogenerate: { directory: "github" },
+              },
+            ],
+          },
+        ]),
+      ],
     }),
   ],
 });
