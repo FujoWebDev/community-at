@@ -14,3 +14,10 @@ on:
 jobs:
   call-workflow:
     uses: FujoWebDev/.github/.github/workflows/deploy-preview-static.yaml@main
+    secrets:
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+    with:
+      REMOTE_TARGET: ${{ vars.REMOTE_TARGET }}
+      REMOTE_HOST: ${{ vars.REMOTE_HOST }}
+      REMOTE_USER: ${{ vars.REMOTE_USER }}
+      PREVIEW_SITE_URL: ${{ vars.PREVIEW_SITE_URL }}
