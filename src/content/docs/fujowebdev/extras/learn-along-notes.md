@@ -4,7 +4,7 @@ sidebar:
   order: 6
 ---
 
-Notes from my [Ms Boba's] review of our learn-along, that show changes I made and how I
+Notes from my [Ms Boba's] review of [our learn-along](https://store.fujocoded.com/products/other/fandom-cookies-digital-items-pack), that show changes I made and how I
 came to them. I had to formulate principles post-facto, as I never really
 spelled them out before.
 
@@ -14,7 +14,7 @@ this is how we write.
 
 :::caution[Classic Ms Boba]
 
-I changed a lot of this again before shipping the learn along, so some of this may be
+I changed a lot of this again before [shipping the learn along](https://store.fujocoded.com/products/other/fandom-cookies-digital-items-pack), so some of this may be
 inaccurate/different in the final version. I think the general principles hold, but
 take all this with a big asterisk.
 
