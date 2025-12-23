@@ -4,6 +4,13 @@ sidebar:
   order: 1
 ---
 
+:::caution
+
+This style guide is an older version we've been reworking. New one will be
+published soon.
+
+:::
+
 Clear and approachable learning content for beginner-to-intermediate hobbyist
 web developers that is:
 
@@ -43,7 +50,7 @@ We assume they:
 As we write, we primarily imagine an audience that is:
 
 - **Very online**, aware of online memes and parlance
-- **Millennial**, coming online around the 00s-10s period (or wishing they had)
+- **Wistfully Millennial**, coming online around the 00s-10s period (or wishing they had)
 - **Nostalgic**, of a time when the internet didn’t take itself so seriously and
   possibilities felt endless
 - **Unapologetically passionate**, not afraid of being seen as “cringe” as they

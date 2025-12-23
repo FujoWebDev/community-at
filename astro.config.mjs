@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import starlightSidebarTopics from "starlight-sidebar-topics";
+import starlightLinksValidator from "starlight-links-validator";
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,7 +25,7 @@ export default defineConfig({
             link: "/sociocracy",
             items: [
               {
-                label: "Example Guide",
+                label: "About Sociocracy",
                 autogenerate: { directory: "sociocracy" },
               },
             ],
@@ -43,11 +44,15 @@ export default defineConfig({
           {
             label: "FujoCoded Resources",
             icon: "seti:db",
-            link: "/fujowebdev",
+            link: "/fujowebdev/style-guide",
             items: [
               {
-                label: "Writing for FujoGuide",
-                autogenerate: { directory: "fujowebdev" },
+                label: "FujoGuide Style Guide",
+                autogenerate: { directory: "fujowebdev/style-guide" },
+              },
+              {
+                label: "Extra Bits",
+                autogenerate: { directory: "fujowebdev/extras" },
               },
               {
                 label: "GitHub Resources",
@@ -56,6 +61,7 @@ export default defineConfig({
             ],
           },
         ]),
+        starlightLinksValidator(),
       ],
     }),
   ],

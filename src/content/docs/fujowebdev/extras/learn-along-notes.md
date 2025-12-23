@@ -1,16 +1,24 @@
 ---
-title: Notes from Writing the Learn-Along
+title: Ms Boba's Extra Notes from Writing the Learn-Along
 sidebar:
   order: 6
 ---
 
-Notes from my review of our learn-along, that show changes I made and how I
+Notes from my [Ms Boba's] review of our learn-along, that show changes I made and how I
 came to them. I had to formulate principles post-facto, as I never really
 spelled them out before.
 
 I had already seen (and written part of) the writing beforehand. Hopefully
 this will help me get it right quicker myself next time—I keep forgetting
 this is how we write.
+
+:::caution[Classic Ms Boba]
+
+I changed a lot of this again before shipping the learn along, so some of this may be
+inaccurate/different in the final version. I think the general principles hold, but
+take all this with a big asterisk.
+
+:::
 
 ## Fortune Generator — Before You Start
 
@@ -177,7 +185,7 @@ you can find it here.
 
 ### The Preamble
 
-Principles extracted:
+Principles I extracted:
 
 - **Active, narrative voice:** Don't describe what the code is, actively (and
   cheerfully) explain what it does.
@@ -224,13 +232,15 @@ Extra things I considered changing:
 
 ### Prerequisites #1
 
-Principles extracted:
+Principles I extracted:
 
 - **Write _to_ the audience:** Address the reader directly, set clear
   expectations, and anticipate questions they may have. Talk about different
   ways they might approach the material.
 - **Call to adventure:** You're telling the tale of a valiant hero that is about
-  to go fight a trecherous enemy (JavaScript). Your language should reflect that.
+  to go embark on a trecherous journey, and your language should reflect that.
+  Note that this doesn't mean that itself JavaScript is treacherous: it's just what
+  Boba-tan tells herself to psych herself up.
 - **Group related content, don't change "subject":** Paragraphs and sections
   often serve specific purposes. Don't let unrelated notes slip in: move them
   around, or reframe them so they match their surroundings.
@@ -347,7 +357,7 @@ What I notice:
 
 - **Frame challenges as fun, approachable, and within the person's reach:** When
   a task feels overwhelming, try thinking about what could make it easier for
-  them and where they're likely to get stuck. Try getting them "out of their
+  them and where they're likely to get stuck. Try getting them "out of their own
   heads".
 - **Normalize struggling with code, and encourage a growth mindset:** Where you can,
   offer suggestions on how to tackle a task, and remind people it's ok to struggle

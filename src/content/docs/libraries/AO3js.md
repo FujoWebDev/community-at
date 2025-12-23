@@ -13,7 +13,7 @@ Scrapes data from [ao3.org](https://ao3.org) and beyond. Now with Types™.
 
 ## Why is this here?
 
-Cause this is a test.
+Cause this is a test. You can find the full library and readme [on the AO3.js GitHub repo](https://github.com/FujoWebDev/AO3.js).
 
 ## What is `@fujocoded/ao3.js`?
 

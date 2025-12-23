@@ -1,16 +1,16 @@
 ---
 title: Community@ FujoCoded
-description: Get all the resources you need for working on FujoCoded projects 
+description: Get all the resources you need for working on FujoCoded projects
 template: splash
 hero:
-  tagline: All the resources are belong to here!
+  tagline: All the resources <del>are</del> <em>will</em> belong to here!
   image:
-    file: ../../assets/community-at-hero.webp
+    file: ../../assets/community-at-hero.png
   actions:
-    - text: Example Guide
-      link: /fujowebdev/
+    - text: See an example
+      link: /fujowebdev/style-guide
       icon: right-arrow
-    - text: Visit FujoCoded
+    - text: What is FujoCoded?
       link: https://fujocoded.com/
       icon: external
       variant: minimal
@@ -18,19 +18,31 @@ hero:
 
 import { Card, CardGrid } from "@astrojs/starlight/components";
 
-## Next steps
+## What is Community@?
+
+Community@ is the community hub for [FujoCoded](https://fujocoded.com) and the
+rest of the FujoVerse™. In this _very_ work in progress website, you'll find
+everything from our resources on collective governance
+([Sociocracy](https://www.sociocracyforall.org/)), documentations for our
+software libraries, and internal—but, we hope, _useful_—guides that everyone
+can see and take inspiration from.
 
 <CardGrid stagger>
-  <Card title="Update content" icon="pencil">
-    Edit `src/content/docs/index.mdx` to see this page change.
+  <Card title="Community resources" icon="comment-alt">
+    [Learn *(eventually)* about Sociocracy](/sociocracy/), the
+    FujoVerse™-approved governance system.
   </Card>
-  <Card title="Add new content" icon="add-document">
-    Add Markdown or MDX files to `src/content/docs` to create new pages.
+  <Card title="Our software libraries" icon="github">
+    [Master FujoCoded's software libraries](/libraries/) with our in-depth,
+    *yet-to-be-written* documentation.
   </Card>
-  <Card title="Configure your site" icon="setting">
-    Edit your `sidebar` and other config in `astro.config.mjs`.
+  <Card title="FujoCoded LLC resources" icon="star">
+    Snoop on FujoCoded's internals, like [our guides to write about writing
+    code](/fujowebdev/style-guide).
   </Card>
-  <Card title="Read the docs" icon="open-book">
-    Learn more in [the Starlight Docs](https://starlight.astro.build/).
+  <Card title="Support our work" icon="patreon">
+    [Join our Patreon](https://www.patreon.com/fujocoded) to help *us* help *the
+    web* help *itself* by bringing technical and governance skills to niche
+    online communities.
   </Card>
 </CardGrid>

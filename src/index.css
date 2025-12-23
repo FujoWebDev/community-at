@@ -27,6 +27,18 @@
 	--sl-color-gray-7: #f7f4ff;
 	--sl-color-black: #ffffff;
 }
+
+:root {
+	padding-inline: 1rem;
+	--sl-content-gap-y: 2rem;
+}
+
+.sl-markdown-content p {
+	max-width: 80ch;
+}
+.hero {
+	padding-block: clamp(2.5rem, calc(1rem + 10vmin), 4rem)
+}
 @media (min-width: 50rem) {
     .hero {
         grid-template-columns: 1fr 1fr;
