@@ -4,8 +4,6 @@ sidebar:
   order: 3
 ---
 
-# **Article Guidelines**
-
 ## **Article Function**
 
 All articles should follow three key principles:

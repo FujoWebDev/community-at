@@ -4,11 +4,9 @@ sidebar:
   order: 5
 ---
 
-# **Content Formatting**
-
 Our content is designed for *skimmability*: as you write it, imagine you’re only reading bits and pieces of it as you go in search of the sections most relevant to what you’re trying to do.
 
-### **General Formatting**
+## **General Formatting**
 
 * Paragraphs:   
   * Keep them short and focused on a single idea.   
@@ -40,7 +38,7 @@ Our content is designed for *skimmability*: as you write it, imagine you’re on
     * Use bullet point lists for key takeaways or items not in a sequence (like this list\!)  
     * Use [Steps](https://starlight.astro.build/components/steps/) for sequences of instructions
 
-### **Code Formatting**
+## **Code Formatting**
 
 * Inline Code: We use inline code to highlight:  
   * Commands (e.g. `git commit -m “your message”`)  
@@ -50,7 +48,7 @@ Our content is designed for *skimmability*: as you write it, imagine you’re on
   * Provide both input and output (unless confusing). You can omit part of the output if it helps the user focus on what you want to see. Similarly, you can make some output lighter to de-emphasize it.  
   * Use the code block captions to call out any particular element of the example you want the user to notice.
 
-### **Other Formatting**
+## **Other Formatting**
 
 Images: 
 

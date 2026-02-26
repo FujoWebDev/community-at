@@ -4,8 +4,6 @@ sidebar:
   order: 4
 ---
 
-# **Writing Style**
-
 This guide is here to create a consistent style our readers can come to trust and learn from. At all times, we must balance technical knowledge with the casual, friendly banter of hobby spaces.
 
 When writing for FujoGuide, **think of yourself as a knowledgeable friend**, rather than a formal instructor. You are deeply invested in the reader’s success, have a strong belief in their abilities, and yet relate to their present struggles—you too have been an *intimidated beginner* once\!
