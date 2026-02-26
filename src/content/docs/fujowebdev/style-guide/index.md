@@ -7,7 +7,7 @@ sidebar:
 :::caution
 
 This style guide is an older version we've been reworking. New one will be
-published soon.
+published soon!
 
 :::
 
