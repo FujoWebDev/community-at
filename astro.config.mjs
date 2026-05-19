@@ -3,9 +3,14 @@ import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import starlightSidebarTopics from "starlight-sidebar-topics";
 import starlightLinksValidator from "starlight-links-validator";
+import remarkDirective from "remark-directive";
+import remarkDoDont from "./src/plugins/remark-do-dont.ts";
 
 // https://astro.build/config
 export default defineConfig({
+  markdown: {
+    remarkPlugins: [remarkDirective, remarkDoDont],
+  },
   integrations: [
     starlight({
       title: "Community@",
@@ -16,7 +21,7 @@ export default defineConfig({
           href: "https://github.com/FujoWebDev/community-at",
         },
       ],
-      customCss: ["./src/index.css"],
+      customCss: ["./src/index.css", "./src/styles/do-dont.css"],
       plugins: [
         starlightSidebarTopics([
           {
