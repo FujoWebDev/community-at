@@ -210,9 +210,8 @@ h1[data-page-title],
 }
 
 @media (min-width: 72rem) {
-  .main-pane > main > .content-panel {
-    padding-inline-start: 0.25rem;
-    --sl-content-margin-inline: 0.5rem;
+  .main-pane {
+    --sl-content-margin-inline: auto;
   }
 }
 
