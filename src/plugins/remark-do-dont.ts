@@ -1,6 +1,6 @@
 import GithubSlugger from "github-slugger";
 import { toString as nodeText } from "mdast-util-to-string";
-import type { Paragraph, Root } from "mdast";
+import type { Heading, Root } from "mdast";
 import type { ContainerDirective } from "mdast-util-directive";
 import type { Plugin } from "unified";
 import type {} from "mdast-util-to-hast";
@@ -15,8 +15,12 @@ const COLUMN: Record<ColumnKind, { className: string; label: string }> = {
 const isColumnKind = (name: string): name is ColumnKind =>
   name === "do" || name === "dont";
 
-const makeLabel = ({ text, id }: { text: string; id: string }): Paragraph => ({
-  type: "paragraph",
+// Typed as `heading` (not `paragraph`) so starlight-links-validator sees the
+// id and doesn't flag the self-link as invalid. `hName: "div"` keeps the
+// rendered HTML still a div.
+const makeLabel = ({ text, id }: { text: string; id: string }): Heading => ({
+  type: "heading",
+  depth: 6,
   data: { hName: "div", hProperties: { id, className: "do-dont-label" } },
   children: [
     {
