@@ -1,23 +1,103 @@
+# Inlined build + deploy so the Astro build can pick up BASE_PATH and
+# generate asset/link URLs that resolve under the preview subdirectory
+# (e.g. https://community-at-preview.fujocoded.dev/<PR_NUMBER>/).
 on:
   push:
     branches:
-      - main # work off main branch
-  pull_request_target: # this workflow triggers either when there's a push to main OR when a PR is opened/updated
+      - main
+  pull_request_target:
     types: [opened, synchronize, reopened]
-  workflow_dispatch: # it also can be triggered manually, and in that case the destination will be required and called "manual_run"
+  workflow_dispatch:
     inputs:
       destination:
         description: "Define destination base path"
         required: true
         default: "manual_run"
 
+name: Site deploy preview
+
+env:
+  IS_PR: ${{ github.event_name == 'pull_request' || github.event_name == 'pull_request_target' }}
+  PR_NUMBER: ${{ github.event.pull_request.number }}
+  REF_TO_CHECKOUT: ${{ (github.event_name == 'pull_request' || github.event_name == 'pull_request_target') && github.event.pull_request.head.sha || github.ref }}
+
 jobs:
-  call-workflow:
-    uses: FujoWebDev/.github/.github/workflows/deploy-preview-static.yaml@main
-    secrets:
-      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-    with:
-      REMOTE_TARGET: ${{ vars.REMOTE_TARGET }}
-      REMOTE_HOST: ${{ vars.REMOTE_HOST }}
-      REMOTE_USER: ${{ vars.REMOTE_USER }}
-      PREVIEW_SITE_URL: ${{ vars.PREVIEW_SITE_URL }}
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name != 'pull_request_target' ||
+      contains('MEMBER OWNER COLLABORATOR', github.event.pull_request.author_association)
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+      - name: Announce deploy preview attempt
+        if: ${{ env.IS_PR == 'true' }}
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+            Started attempt to build a new deploy preview for PR ${{ env.PR_NUMBER }}.
+          comment_tag: pr_published
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.REF_TO_CHECKOUT }}
+
+      - name: Compute deploy suffix
+        id: suffix
+        run: |
+          set -euo pipefail
+          if [ "${{ env.IS_PR }}" = "true" ]; then
+            SUFFIX="${{ env.PR_NUMBER }}"
+          elif [ "${{ github.event_name }}" = "push" ]; then
+            SUFFIX="${{ github.ref_name }}"
+          else
+            SUFFIX="${{ github.event.inputs.destination }}"
+          fi
+          if [ -z "$SUFFIX" ]; then
+            echo "ERROR: empty deploy suffix for event '${{ github.event_name }}'"
+            exit 1
+          fi
+          echo "value=$SUFFIX" >> "$GITHUB_OUTPUT"
+          echo "base_path=/$SUFFIX/" >> "$GITHUB_OUTPUT"
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        env:
+          BASE_PATH: ${{ steps.suffix.outputs.base_path }}
+        run: npm run build
+
+      - name: Assert deploy path is not the root target
+        run: |
+          DEPLOY_PATH="${{ vars.REMOTE_TARGET }}${{ steps.suffix.outputs.value }}"
+          if [ "$DEPLOY_PATH" = "${{ vars.REMOTE_TARGET }}" ]; then
+            echo "ERROR: DEPLOY_PATH equals REMOTE_TARGET; would wipe siblings"
+            exit 1
+          fi
+
+      - name: Deploy to server
+        uses: easingthemes/ssh-deploy@main
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ARGS: "-rlgoDzvc -i --delete"
+          SOURCE: "dist/"
+          REMOTE_HOST: ${{ vars.REMOTE_HOST }}
+          REMOTE_USER: ${{ vars.REMOTE_USER }}
+          TARGET: ${{ vars.REMOTE_TARGET }}${{ steps.suffix.outputs.value }}
+
+      - name: Update PR comment
+        if: ${{ env.IS_PR == 'true' }}
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+            Created a new deploy preview for PR ${{ env.PR_NUMBER }}. [See preview](${{ vars.PREVIEW_SITE_URL }}/${{ env.PR_NUMBER }}/).
+          comment_tag: pr_published
