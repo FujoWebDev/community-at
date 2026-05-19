@@ -1,0 +1,179 @@
+/*
+ * Do / Do-not paired columns. Authored in markdown via
+ *   :::do
+ *   - item
+ *   :::
+ *   :::dont
+ *   - item
+ *   :::
+ * The remark-do-dont plugin wraps adjacent pairs in a .do-dont grid.
+ */
+.do-dont {
+  display: table;
+  width: calc(100% + 2em);
+  margin-inline-start: -1em;
+  table-layout: fixed;
+  margin-block: 2em 3.5em;
+  border-top: 1px dotted var(--sl-color-hairline-shade);
+  border-bottom: 1px dotted var(--sl-color-hairline-shade);
+  background-color: color-mix(in oklch, var(--sl-color-accent) 5%, transparent);
+}
+
+:root[data-theme="light"] .do-dont {
+  background-color: color-mix(in oklch, var(--sl-color-accent) 4%, transparent);
+}
+
+.do-column,
+.dont-column {
+  display: table-cell;
+  vertical-align: top;
+  padding-block: 1em;
+  position: relative;
+  isolation: isolate;
+}
+
+.do-column::before,
+.dont-column::before {
+  content: "";
+  position: absolute;
+  inset-block: 0.15em;
+  border-radius: 0.6em;
+  z-index: -1;
+  pointer-events: none;
+  transition: background-color 250ms ease-out;
+}
+
+.do-column::before {
+  inset-inline: 0.4em;
+}
+
+.dont-column::before {
+  inset-inline-start: -0.4em;
+  inset-inline-end: 0.4em;
+}
+
+.do-column:has(.do-dont-label:target)::before {
+  background-color: rgba(46, 204, 113, 0.16);
+}
+
+.dont-column:has(.do-dont-label:target)::before {
+  background-color: rgba(255, 85, 119, 0.16);
+}
+
+:root[data-theme="light"] .do-column:has(.do-dont-label:target)::before {
+  background-color: rgba(31, 157, 85, 0.14);
+}
+
+:root[data-theme="light"] .dont-column:has(.do-dont-label:target)::before {
+  background-color: rgba(192, 51, 74, 0.12);
+}
+
+.do-column {
+  padding-inline-start: 1.5em;
+  padding-inline-end: 1rem;
+}
+
+.dont-column {
+  padding-inline-start: 1rem;
+  padding-inline-end: 1.5em;
+}
+
+.do-dont-label {
+  width: max-content;
+  margin: 0 0 0.9em 0;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  scroll-margin-top: 6rem;
+}
+
+.sl-markdown-content .do-dont-label-anchor {
+  display: inline-block;
+  text-decoration: none;
+  padding-inline-end: 1em;
+  padding-block-end: 4px;
+  border-bottom: 2px dotted currentColor;
+}
+
+.sl-markdown-content .do-column .do-dont-label-anchor {
+  color: #2ecc71;
+}
+
+.sl-markdown-content .dont-column .do-dont-label-anchor {
+  color: #ff5577;
+}
+
+:root[data-theme="light"]
+  .sl-markdown-content
+  .do-column
+  .do-dont-label-anchor {
+  color: #1f9d55;
+}
+
+:root[data-theme="light"]
+  .sl-markdown-content
+  .dont-column
+  .do-dont-label-anchor {
+  color: #c0334a;
+}
+
+.sl-markdown-content .do-dont-label-anchor:hover,
+.sl-markdown-content .do-dont-label-anchor:focus {
+  color: var(--brand-pop);
+}
+
+.do-column ul,
+.dont-column ul {
+  list-style: none;
+  padding-inline-start: 0;
+  margin-block: 0;
+}
+
+.do-column li,
+.dont-column li {
+  position: relative;
+  padding-inline-start: 1.6em;
+  margin-block: 0.4em;
+}
+
+.do-column li::before,
+.dont-column li::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 700;
+  line-height: inherit;
+}
+
+.do-column li::before {
+  content: "✓";
+  color: #2ecc71;
+}
+
+.dont-column li::before {
+  content: "✗";
+  color: #ff5577;
+}
+
+:root[data-theme="light"] .do-column li::before {
+  color: #1f9d55;
+}
+
+:root[data-theme="light"] .dont-column li::before {
+  color: #c0334a;
+}
+
+/* Stack on narrow viewports. */
+@media (max-width: 40rem) {
+  .do-dont,
+  .do-column,
+  .dont-column {
+    display: block;
+  }
+
+  .do-column {
+    margin-block-end: 1.5em;
+  }
+}

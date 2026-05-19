@@ -12,9 +12,11 @@
   "dependencies": {
     "@astrojs/starlight": "^0.36.1",
     "astro": "^5.14.5",
+    "remark-directive": "^4.0.0",
     "sharp": "^0.32.5",
     "starlight-links-validator": "^0.19.2",
-    "starlight-sidebar-topics": "^0.6.2"
+    "starlight-sidebar-topics": "^0.6.2",
+    "unist-util-visit": "^5.1.0"
   },
   "repository": {
     "url": "https://github.com/FujoWebDev/community-at",
