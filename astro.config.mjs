@@ -5,13 +5,18 @@ import starlightSidebarTopics from "starlight-sidebar-topics";
 import starlightLinksValidator from "starlight-links-validator";
 import remarkDirective from "remark-directive";
 import remarkDoDont from "./src/plugins/remark-do-dont.ts";
+import baseLinksIntegration from "./src/plugins/base-links-integration.ts";
+
+const base = process.env.BASE_PATH;
 
 // https://astro.build/config
 export default defineConfig({
+  base,
   markdown: {
     remarkPlugins: [remarkDirective, remarkDoDont],
   },
   integrations: [
+    ...(base ? [baseLinksIntegration(base)] : []),
     starlight({
       title: "Community@",
       social: [
@@ -66,7 +71,7 @@ export default defineConfig({
             ],
           },
         ]),
-        starlightLinksValidator(),
+        ...(base ? [] : [starlightLinksValidator()]),
       ],
     }),
   ],
